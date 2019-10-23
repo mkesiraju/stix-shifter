@@ -37,8 +37,10 @@ class APIClient():
                                     connection.get('port'),
                                     connection.get('cert', None),
                                     headers,
-                                    url_modifier_function=url_modifier_function,
-                                    cert_verify=connection.get('cert_verify', 'True')
+                                    url_modifier_function,
+                                    connection.get('cert_verify', 'True'),
+                                    connection.get('sni', None),
+                                    connection.get('server_cert', None)
                                     )
 
     def ping_box(self):

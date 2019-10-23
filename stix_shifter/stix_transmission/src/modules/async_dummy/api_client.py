@@ -7,12 +7,16 @@ class APIClient():
          # Uncomment when implementing data source API client.
         # auth = configuration.get('auth')
         # headers = dict()
+        # url_modifier_function = None
         # headers['X-Auth-Token'] = auth.get('token')
         # self.client = RestApiClient(connection.get('host'),
         #                             connection.get('port'),
         #                             connection.get('cert', None),
         #                             headers,
-        #                             cert_verify=connection.get('cert_verify', 'True')
+        #                             url_modifier_function,
+                                      # connection.get('cert_verify', 'True'),
+                                      # connection.get('sni', None),
+                                      # connection.get('server_cert', None)
         #                             )
 
         # Placeholder client to allow dummy transmission calls.

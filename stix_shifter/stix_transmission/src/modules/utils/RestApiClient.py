@@ -9,7 +9,7 @@ import errno
 # This is a simple HTTP client that can be used to access the REST API
 class RestApiClient:
 
-    def __init__(self, host, port = None, cert=None, headers={}, url_modifier_function=None, cert_verify=True, sni=None, server_cert=True):
+    def __init__(self, host, port = None, cert=None, headers={}, url_modifier_function=None, cert_verify=True, sni=None, server_cert=None):
         server_ip = host
         if port is not None:
             server_ip += ":" + str(port)            
@@ -68,6 +68,8 @@ class RestApiClient:
                     response = call(url, headers=actual_headers, data=data, verify=self.cert_file_name)
                 elif not self.server_cert and self.cert is not None:
                     response = call(url, headers=actual_headers, data=data, cert=self.cert_file_name)
+                else:
+                    response = call(url, headers=actual_headers, cert=self.cert_file_name, data=data, verify=self.cert_verify)
                 
                 if 'headers' in dir(response) and isinstance(response.headers, collections.Mapping) and 'Content-Type' in response.headers \
                                 and "Deprecated" in response.headers['Content-Type']:

@@ -1,5 +1,5 @@
 from ..utils.RestApiClient import RestApiClient
-
+import json
 
 class APIClient():
     PING_ENDPOINT = 'sensor'
@@ -18,7 +18,10 @@ class APIClient():
                                     connection.get('port'),
                                     connection.get('cert', None),
                                     headers,
-                                    cert_verify=connection.get('cert_verify', 'True')
+                                    None,
+                                    connection.get('cert_verify', 'True'),
+                                    connection.get('sni', None),
+                                    connection.get('server_cert', None),
                                     )
 
     def ping_box(self):
